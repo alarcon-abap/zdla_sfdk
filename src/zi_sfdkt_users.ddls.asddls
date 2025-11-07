@@ -7,6 +7,7 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
+/*+[hideWarning] { "IDS" : [ "CARDINALITY_CHECK" ]  } */
 define view entity zi_sfdkt_users
   as select from usr21
   association [1..1] to adrp as _UsersAdress on $projection.UserAddressId = _UsersAdress.persnumber

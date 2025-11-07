@@ -9,16 +9,18 @@
 }
 define root view entity zr_sfdk_feedback
   as select from zi_sfdkt_001
-  association [1..1] to zi_sfdkt_users as _Useres on $projection.CreatedBy = _Useres.BusinessName
+  association [1..1] to zi_sfdkt_users as _Users on $projection.CreatedBy = _Users.BusinessName
 {
   key FeedbackId,
       FeedbackText,
       Sentiment,
       Score,
+      @Semantics.systemDate.createdAt: true
       CreatedAt,
+      @Semantics.user.createdBy: true
       CreatedBy,
-      _Useres.UserName,
+      _Users.UserName,
       LastChangedAt,
 
-      _Useres
+      _Users
 }
